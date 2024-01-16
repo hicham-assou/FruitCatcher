@@ -11,6 +11,12 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   startButton: {
     backgroundColor: '#3498db',
     padding: 10,
