@@ -5,14 +5,14 @@ import { styles } from './HomeScreenStyle';
 
 const HomeScreen: React.FC = ({ navigation }) => {
   return (
-      <ImageBackground source={require('./background.png')} style={styles.background}>
+      <ImageBackground source={require('../../assets/background.png')} style={styles.background}>
 
         <View style={styles.container}>
           <Text style={styles.title}>Fruit Catcher</Text>
 
           <TouchableOpacity
             style={styles.optionsButton}
-            onPress={() => navigation.navigate('Settings')}
+            onPress={() => navigation.navigate('Parametres')}
           >
             <Text style={styles.buttonText}>Options</Text>
           </TouchableOpacity>

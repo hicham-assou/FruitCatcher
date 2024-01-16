@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { styles } from './SettingsStyle';
+import { styles } from './ParametresStyle';
 
-const Settings: React.FC = () => {
+const Parametres: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Paramètres</Text>
@@ -20,4 +20,4 @@ const Settings: React.FC = () => {
   );
 };
 
-export default Settings;
+export default Parametres;
