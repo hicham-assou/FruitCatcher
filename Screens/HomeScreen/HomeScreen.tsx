@@ -34,7 +34,7 @@ const HomeScreen: React.FC = ({ navigation }) => {
         <Text style={styles.buttonText}>Mode avec Vies</Text>
       </TouchableOpacity>
 
-      {/* Ajoute d'autres boutons ou sections selon les besoins */}
+      {/* Ajoute d'autres boutons ou sections selon nos besoins */}
     </View>
   );
 };
