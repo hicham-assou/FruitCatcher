@@ -19,14 +19,14 @@ const HomeScreen: React.FC = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.freeModeButton}
-            onPress={() => navigation.navigate('FreeModeScreen')}
+            onPress={() => navigation.navigate('Mode Libre')}
           >
             <Text style={styles.buttonText}>Mode Libre</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.livesModeButton}
-            onPress={() => navigation.navigate('LivesModeScreen')}
+            onPress={() => navigation.navigate('Mode Arcade')}
           >
             <Text style={styles.buttonText}>Mode avec Vies</Text>
           </TouchableOpacity>
