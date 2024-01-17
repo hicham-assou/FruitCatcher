@@ -5,28 +5,54 @@ const window = Dimensions.get('window');
 
 const GameScreen = () => {
   const fruits = ['🍎', '🍌', '🍇', '🍓', '🍊', '🍒', '🍉', '🥝'];
-  const [fruit, setFruit] = useState(fruits[Math.floor(Math.random() * fruits.length)]);
-  const [yPosition, setYPosition] = useState(0);
-  const [xPosition, setXPosition] = useState(Math.random() * window.width);
+  const [fruitArray, setFruitArray] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setYPosition((prevPosition) => {
-        const newPosition = prevPosition + 5;
-        if (newPosition > window.height) {
-          setFruit(fruits[Math.floor(Math.random() * fruits.length)]);
-          setXPosition(Math.random() * window.width);
-          return 0;
-        }
-        return newPosition;
-      });
-    }, 10);
+      const newFruit = {
+        fruit: fruits[Math.floor(Math.random() * fruits.length)],
+        yPosition: 0,
+        xPosition: Math.random() * window.width,
+        speed: Math.random() * 5 + 1, // Adjust the speed as needed
+      };
+
+      setFruitArray((prevArray) => [...prevArray, newFruit]);
+    }, 3000); // Adjust the interval as needed
+
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const updatePositions = () => {
+      setFruitArray((prevArray) => {
+        return prevArray.map((item) => {
+          const newPosition = item.yPosition + item.speed;
+
+          if (newPosition > window.height) {
+            return {
+              ...item,
+              yPosition: 0,
+              xPosition: Math.random() * window.width,
+            };
+          }
+
+          return { ...item, yPosition: newPosition };
+        });
+      });
+    };
+
+    const positionInterval = setInterval(updatePositions, 10);
+
+    return () => clearInterval(positionInterval);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={{...styles.fruit, top: yPosition, left: xPosition}}>{fruit}</Text>
+      {fruitArray.map((item, index) => (
+        <Text key={index} style={{ ...styles.fruit, top: item.yPosition, left: item.xPosition }}>
+          {item.fruit}
+        </Text>
+      ))}
     </View>
   );
 };
